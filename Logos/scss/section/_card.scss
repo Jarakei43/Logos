@@ -1,0 +1,30 @@
+.card {
+  &__line {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 100%;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    &-item {
+      font-family: "Gilroy-Medium";
+      font-weight: 600;
+      font-size: 16px;
+      color: $title;
+    }
+  }
+
+  &__item {
+    display: flex;
+    margin-bottom: 50px;
+
+    &-info:not(.card__item-info-bot-line) {
+      padding: 38px 151px 25px 50px;
+    } 
+  }
+}

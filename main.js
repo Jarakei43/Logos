@@ -7,7 +7,6 @@ fetch("./menu.json")
         console.log(menuData);
 
         function renderMenu(items, container) {
-            // console.log(m);
             container.innerHTML = '';
 
            items.forEach((item) => {
@@ -50,10 +49,9 @@ fetch("./menu.json")
         const hotDishes = allData.filter(item=>["Горячие закуски", "Рыбные блюда","Фирменные блюда"].includes(item.category));
         const meatDishes = allData.filter(item=>["Мясные блюда", "Гриль меню"].includes(item.category));
 
-        // renderMenu(menuData, contentCold);
-        renderMenu(coldDishes, contentCold); // Холодные блюда
-        renderMenu(hotDishes, contentHot);  // Горячие блюда
-        renderMenu(meatDishes, contentMeat); // Мясные блюда
+        renderMenu(coldDishes, contentCold); 
+        renderMenu(hotDishes, contentHot);  
+        renderMenu(meatDishes, contentMeat); 
     })
 
     .catch((error) => {

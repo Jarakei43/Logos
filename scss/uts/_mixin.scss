@@ -1,0 +1,106 @@
+@mixin card-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin title-line {
+  width: 3px;
+  height: 33px;
+  background: #618967;
+}
+
+@mixin main-title {
+  font-family: "Gilroy-Bold";
+  font-weight: 700;
+  font-size: 32px;
+  color: $title;
+}
+
+@mixin card-title {
+  font-family: "Gilroy-Bold";
+  font-weight: 700;
+  font-size: 22px;
+  color: $title;
+}
+
+@mixin card-weight {
+  font-family: "Gilroy-Regular";
+  font-weight: 400;
+  font-size: 12px;
+  color: $title;
+}
+
+@mixin card-description($width, $bot) {
+  max-width: $width;
+  margin-top: 5px;
+  margin-bottom: $bot;
+  font-family: "Gilroy-Regular";
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 131%;
+  color: $text;
+}
+
+@mixin card-price {
+  font-family: "Gilroy-Medium";
+  font-weight: 600;
+  font-size: 20px;
+  color: $title;
+}
+
+@mixin card-btn($top, $right, $bot, $left) {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: $top $right $bot $left;
+  border-radius: 10px;
+  background: $btns;
+  font-family: "Gilroy-Medium";
+  font-weight: 600;
+  font-size: 14px;
+  color: $title;
+  border: 0;
+}
+
+@mixin about-card($top, $right, $bot, $left, $gap) {
+  padding: $top $right $bot $left;
+  backdrop-filter: blur(4px);
+  background: rgba(80, 75, 74, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $gap;
+  border: none;
+  cursor: pointer;
+}
+
+@mixin about-card-span {
+  font-family: "Gilroy-Regular";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 139%;
+  color: $title;
+}
+
+@mixin about-card-span-hover {
+  font-family: "Gilroy-Regular";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 139%;
+  color: $hover;
+}
+
+@mixin about-card-hover {
+  backdrop-filter: blur(4px);
+  box-shadow: 0 40px 50px 0 rgba(0, 0, 0, 0.4);
+  background: #504b4a;
+  border: 0;
+}
+
+@mixin footer-links-text($fs) {
+  font-family: "Gilroy-Medium";
+  font-weight: 500;
+  font-size: $fs;
+  color: $title;
+}

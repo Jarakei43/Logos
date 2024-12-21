@@ -13,7 +13,7 @@ fetch("./menu.json")
                 container.innerHTML += ` 
                  <div class="cold__catalog-card swiper-slide">
                  <div class="cold__catalog-card-number">${item.counter}</div>
-                 <imgпш
+                 <img
                  src="${item.imgUrl}"
                   alt=""
                 class="cold__catalog-card-img"

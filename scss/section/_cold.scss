@@ -25,6 +25,7 @@
     margin-bottom: 50px;
 
     &-card {
+      height: 385px;
       position: relative;
       cursor: pointer;
       background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
@@ -32,6 +33,7 @@
 
       &-img {
         width: 100%;
+        height: 198.88px;
       }
 
       &-info {
@@ -52,6 +54,7 @@
 
       &-description {
         @include card-description(249px, 15px);
+        height: 51px;
       }
 
       &-description-small {
@@ -87,7 +90,7 @@
       }
     }
 
-    &-card:hover {
+    .active {
       box-shadow: 0 30px 45px 0 rgba(43, 40, 40, 0.6);
       background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
 
@@ -140,7 +143,7 @@
   }
 }
 
-@media (max-width:430px) {
+@media (max-width: 430px) {
   .cold {
     &__catalog {
       &-card {

@@ -1,16 +1,41 @@
+const localDishes = JSON.parse(localStorage.getItem("dishes")) || [];
+
 fetch("./menu.json")
-    .then(response => response.json())
-    .then(menuData => {
-        const contentCold = document.querySelector('.cold__dishes');
-        const contentHot = document.querySelector('.hot__dishes');
-        const contentMeat = document.querySelector('.meat__dishes');
-        console.log(menuData);
+  .then((response) => response.json())
+  .then((menuData) => {
+    const menuDataArr = menuData.LogosMenu;
+    const contentCold = document.querySelector(".cold__dishes");
+    const contentHot = document.querySelector(".hot__dishes");
+    const contentMeat = document.querySelector(".meat__dishes");
+    console.log(localDishes);
 
-        function renderMenu(items, container) {
-            container.innerHTML = '';
+    function onClickCard() {
+      const allCards = document.querySelectorAll(".cold__catalog-card");
 
-           items.forEach((item) => {
-                container.innerHTML += ` 
+      allCards.forEach((item) => {
+        const addBtn = item.querySelector(".cold__catalog-card-btn");
+
+        addBtn.addEventListener("click", function () {
+          const dishId = addBtn.getAttribute("data-id");
+          const findCard = menuDataArr.find((item) => item.id == dishId);
+          const existDish = localDishes.find((item) => item.id === findCard.id);
+
+          if (existDish) {
+            existDish.counter++;
+          } else {
+            findCard.counter = 1;
+            localDishes.push(findCard);
+          }
+          localStorage.setItem("dishes", JSON.stringify(localDishes))
+        });
+      });
+    }
+
+    async function renderMenu(items, container) {
+      container.innerHTML = "";
+
+      await items.forEach((item) => {
+        container.innerHTML += ` 
                  <div class="cold__catalog-card swiper-slide">
                  <div class="cold__catalog-card-number">${item.counter}</div>
                  <img
@@ -34,26 +59,33 @@ fetch("./menu.json")
               <div class="cold__catalog-card-plus">
                 <img src="./imgs/plus.svg" alt="plus" />
                </div>
-            <button class="cold__catalog-card-btn">
+            <button data-id=${item.id} class="cold__catalog-card-btn">
                 В корзину
                 <img src="./imgs/Cart.svg" alt="" />
             </button>
         </div>
     </div>
 </div>`;
+      });
+    }
+    const coldDishes = menuDataArr.filter((item) =>
+      ["Холодные закуски", "Супы"].includes(item.category)
+    );
+    const hotDishes = menuDataArr.filter((item) =>
+      ["Горячие закуски", "Рыбные блюда", "Фирменные блюда"].includes(
+        item.category
+      )
+    );
+    const meatDishes = menuDataArr.filter((item) =>
+      ["Мясные блюда", "Гриль меню"].includes(item.category)
+    );
 
-            });
-        }
-        const allData = menuData.LogosMenu;
-        const coldDishes = allData.filter(item=>["Холодные закуски", "Супы"].includes(item.category));
-        const hotDishes = allData.filter(item=>["Горячие закуски", "Рыбные блюда","Фирменные блюда"].includes(item.category));
-        const meatDishes = allData.filter(item=>["Мясные блюда", "Гриль меню"].includes(item.category));
+    renderMenu(coldDishes, contentCold);
+    renderMenu(hotDishes, contentHot);
+    renderMenu(meatDishes, contentMeat);
+    onClickCard();
+  })
 
-        renderMenu(coldDishes, contentCold); 
-        renderMenu(hotDishes, contentHot);  
-        renderMenu(meatDishes, contentMeat); 
-    })
-
-    .catch((error) => {
-        console.error("Ошибка при получении данных:", error);
-    });
+  .catch((error) => {
+    console.error("Ошибка при получении данных:", error);
+  });

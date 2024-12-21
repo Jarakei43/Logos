@@ -404,6 +404,7 @@ body {
   margin-bottom: 50px;
 }
 .cold__catalog-card {
+  height: 385px;
   position: relative;
   cursor: pointer;
   background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
@@ -411,6 +412,7 @@ body {
 }
 .cold__catalog-card-img {
   width: 100%;
+  height: 198.88px;
 }
 .cold__catalog-card-info {
   padding: 15px 16px 18px 20px;
@@ -441,6 +443,7 @@ body {
   font-size: 13px;
   line-height: 131%;
   color: #cfcfcf;
+  height: 51px;
 }
 .cold__catalog-card-description-small {
   max-width: 254px;
@@ -487,14 +490,14 @@ body {
 .cold__catalog-card-minus, .cold__catalog-card-plus {
   box-shadow: 0 5px 10px 0 rgba(114, 163, 121, 0.7);
 }
-.cold__catalog-card:hover {
+.cold__catalog .active {
   box-shadow: 0 30px 45px 0 rgba(43, 40, 40, 0.6);
   background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
 }
-.cold__catalog-card:hover .cold__catalog-card-btn {
+.cold__catalog .active .cold__catalog-card-btn {
   display: none;
 }
-.cold__catalog-card:hover .cold__catalog-card-number {
+.cold__catalog .active .cold__catalog-card-number {
   bottom: 385px;
   right: -14px;
   display: block;
@@ -507,16 +510,16 @@ body {
   font-size: 20px;
   color: #fff;
 }
-.cold__catalog-card:hover .cold__catalog-card-minus,
-.cold__catalog-card:hover .cold__catalog-card-plus {
+.cold__catalog .active .cold__catalog-card-minus,
+.cold__catalog .active .cold__catalog-card-plus {
   display: block;
   border-radius: 10px;
   background: linear-gradient(133deg, #618967 0%, #72a479 100%);
 }
-.cold__catalog-card:hover .cold__catalog-card-minus img {
+.cold__catalog .active .cold__catalog-card-minus img {
   padding: 20.36px 22px;
 }
-.cold__catalog-card:hover .cold__catalog-card-plus img {
+.cold__catalog .active .cold__catalog-card-plus img {
   padding: 13px 22px;
 }
 

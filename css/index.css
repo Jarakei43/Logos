@@ -406,7 +406,6 @@ body {
 .cold__catalog-card {
   height: 385px;
   position: relative;
-  cursor: pointer;
   background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
   border-radius: 10px;
 }
@@ -490,17 +489,12 @@ body {
 .cold__catalog-card-minus, .cold__catalog-card-plus {
   box-shadow: 0 5px 10px 0 rgba(114, 163, 121, 0.7);
 }
-.cold__catalog .active {
-  box-shadow: 0 30px 45px 0 rgba(43, 40, 40, 0.6);
-  background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
-}
-.cold__catalog .active .cold__catalog-card-btn {
-  display: none;
-}
-.cold__catalog .active .cold__catalog-card-number {
-  bottom: 385px;
-  right: -14px;
+
+.number-active {
   display: block;
+  position: absolute;
+  bottom: 360px;
+  right: -14px;
   font-family: "Gilroy-Bold";
   padding: 14px 19px 12px 20px;
   background: #79b282;
@@ -510,16 +504,24 @@ body {
   font-size: 20px;
   color: #fff;
 }
-.cold__catalog .active .cold__catalog-card-minus,
-.cold__catalog .active .cold__catalog-card-plus {
+
+.card-active {
+  box-shadow: 0 30px 45px 0 rgba(43, 40, 40, 0.6);
+  background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+}
+
+.new-active {
+  cursor: pointer;
   display: block;
   border-radius: 10px;
   background: linear-gradient(133deg, #618967 0%, #72a479 100%);
 }
-.cold__catalog .active .cold__catalog-card-minus img {
+
+.cold__catalog-card-minus img {
   padding: 20.36px 22px;
 }
-.cold__catalog .active .cold__catalog-card-plus img {
+
+.cold__catalog-card-plus img {
   padding: 13px 22px;
 }
 

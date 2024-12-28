@@ -19,43 +19,52 @@ fetch("./menu.json")
           const dishId = addBtn.getAttribute("data-id");
           const findCard = menuDataArr.find((item) => item.id == dishId);
           const existDish = localDishes.find((item) => item.id === findCard.id);
+          const cardCounter = item.querySelector(".cold__catalog-card-number");
+          const minusBtn = item.querySelector(".cold__catalog-card-minus");
+          const plusBtn = item.querySelector(".cold__catalog-card-plus");
 
           if (existDish) {
             existDish.counter++;
+            cardCounter.innerText = existDish.counter;
           } else {
             findCard.counter = 1;
+            cardCounter.classList.add("number-active");
+            item.classList.add("card-active");
+            addBtn.style.display = "none";
+            minusBtn.classList.add("new-active");
+            plusBtn.classList.add("new-active");
             localDishes.push(findCard);
           }
-          localStorage.setItem("dishes", JSON.stringify(localDishes))
+          localStorage.setItem("dishes", JSON.stringify(localDishes));
         });
       });
     }
 
-    async function renderMenu(items, container) {
+    function renderMenu(items, container) {
       container.innerHTML = "";
 
-      await items.forEach((item) => {
+      items.forEach((item) => {
         container.innerHTML += ` 
                  <div class="cold__catalog-card swiper-slide">
-                 <div class="cold__catalog-card-number">${item.counter}</div>
+                    <div class="cold__catalog-card-number">1</div>
                  <img
                  src="${item.imgUrl}"
                   alt=""
                 class="cold__catalog-card-img"
                  />
                 <div class="cold__catalog-card-info">
-                <div class="cold__catalog-card-top">
-                <h3 class="cold__catalog-card-title">${item.name}</h3>
-               <span class="cold__catalog-card-weight">${item.weight}</span>
+                  <div class="cold__catalog-card-top">
+                  <h3 class="cold__catalog-card-title">${item.name}</h3>
+                  <span class="cold__catalog-card-weight">${item.weight}</span>
                </div>
               <p class="cold__catalog-card-description">
               ${item.description}
               </p>
-              <div class="cold__catalog-card-bot">
+              <div class="cold__catalog-card-bot"> 
               <div class="cold__catalog-card-minus">
                 <img src="./imgs/minus.svg" alt="minus" />
                </div>
-               <b class="cold__catalog-card-price">${item.price}</b>
+               <b class="cold__catalog-card-price">${item.price}₽</b>
               <div class="cold__catalog-card-plus">
                 <img src="./imgs/plus.svg" alt="plus" />
                </div>

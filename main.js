@@ -8,6 +8,10 @@ fetch("./menu.json")
     const contentHot = document.querySelector(".hot__dishes");
     const contentMeat = document.querySelector(".meat__dishes");
     console.log(localDishes);
+    const spanFilter = document.querySelectorAll(".nav__list-item");
+    console.log(spanFilter);
+    const titleCategory = document.querySelector(".cold__title-item");
+    console.log(titleCategory);
 
     function onClickCard() {
       const allCards = document.querySelectorAll(".cold__catalog-card");
@@ -93,6 +97,16 @@ fetch("./menu.json")
     renderMenu(hotDishes, contentHot);
     renderMenu(meatDishes, contentMeat);
     onClickCard();
+    spanFilter.forEach(span => {
+        span.addEventListener('click', () => {
+            const selectadCategory = span.getAttribute('data-category');
+            console.log("выбрана категория:", selectadCategory);
+            
+            titleCategory.textContent = selectadCategory;
+            const filteredData = menuDataArr.filter(item => item.category === selectadCategory);
+            renderMenu(filteredData, contentCold)
+        })
+    })
   })
 
   .catch((error) => {

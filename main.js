@@ -61,7 +61,7 @@ fetch("./menu.json")
             span.addEventListener('click', () => {
                 const selectadCategory = span.getAttribute('data-category');
                 console.log("выбрана категория:", selectadCategory);
-                
+
                 titleCategory.textContent = selectadCategory;
                 const filteredData = allData.filter(item => item.category === selectadCategory);
                 renderMenu(filteredData, contentCold)

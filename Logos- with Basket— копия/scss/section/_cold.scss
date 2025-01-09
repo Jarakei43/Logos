@@ -1,0 +1,170 @@
+.cold {
+  overflow: hidden;
+
+  &__line {
+    max-width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  &__title {
+    margin: 51px 0 50px 91px;
+    display: flex;
+    gap: 19px;
+    align-items: center;
+
+    &-line {
+      @include title-line;
+    }
+
+    &-item {
+      @include main-title;
+    }
+  }
+
+  &__catalog {
+    margin-bottom: 50px;
+
+    &-card {
+      height: 385px;
+      position: relative;
+      background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+      border-radius: 10px;
+
+      &-img {
+        width: 100%;
+        height: 198.88px;
+      }
+
+      &-info {
+        padding: 15px 16px 18px 20px;
+      }
+
+      &-top {
+        @include card-flex;
+      }
+
+      &-title {
+        @include card-title;
+      }
+
+      &-weight {
+        @include card-weight;
+      }
+
+      &-description {
+        @include card-description(249px, 15px);
+        height: 51px;
+      }
+
+      &-description-small {
+        @include card-description(254px, 32px);
+      }
+
+      &-bot {
+        @include card-flex;
+      }
+
+      &-price {
+        @include card-price;
+      }
+
+      &-btn {
+        @include card-btn(10px, 16px, 10px, 19px);
+        cursor: pointer;
+      }
+
+      &-number {
+        position: absolute;
+        display: none;
+      }
+
+      &-minus,
+      &-plus {
+        display: none;
+      }
+
+      &-minus,
+      &-plus {
+        box-shadow: 0 5px 10px 0 rgba(114, 163, 121, 0.7);
+      }
+    }
+  }
+}
+
+.number-active {
+  display: block;
+  position: absolute;
+  bottom: 360px;
+  right: -14px;
+  font-family: "Gilroy-Bold";
+  padding: 14px 19px 12px 20px;
+  background: #79b282;
+  fill: #79b282;
+  border-radius: 100%;
+  font-weight: 700;
+  font-size: 20px;
+  color: $title;
+}
+
+.card-active {
+  box-shadow: 0 30px 45px 0 rgba(43, 40, 40, 0.6);
+  background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+}
+
+.new-active{
+  cursor: pointer;
+  display: block;
+  border-radius: 10px;
+  background: $btns;
+}
+
+.cold__catalog-card-minus img {
+  padding: 20.36px 22px;
+}
+
+.cold__catalog-card-plus img {
+  padding: 13px 22px;
+}
+
+@media (max-width: 650px) {
+  .cold {
+    &__title {
+      margin-left: 15px;
+      gap: 10px;
+
+      &-item {
+        font-size: 29px;
+      }
+    }
+  }
+}
+
+@media (max-width: 430px) {
+  .cold {
+    &__catalog {
+      &-card {
+        width: 80% !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .cold {
+    &__title-item {
+      font-size: 20px;
+    }
+
+    &__catalog-card-title {
+      font-size: 20px;
+    }
+
+    &__catalog-card-description {
+      font-size: 12px;
+    }
+
+    &__title-line {
+      height: 22px;
+    }
+  }
+}

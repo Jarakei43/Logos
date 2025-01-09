@@ -1,0 +1,148 @@
+.map {
+  position: relative;
+  &__content {
+    filter: invert(80%);
+    -ms-filter: invert(80%);
+    -webkit-filter: invert(80%);
+    -moz-filter: invert(80%);
+    -o-filter: invert(80%);
+  }
+
+  &__wrap {
+    position: absolute;
+    top: 220px;
+    left: 109px;
+    border-radius: 15px;
+    padding: 25px 10px 24px 43px;
+    box-shadow: 0 0 70px 0 rgba(0, 0, 0, 0.15);
+    background: #2e2b2c;
+  }
+
+  &__title {
+    font-family: "Gilroy-Bold";
+    font-weight: 700;
+    font-size: 30px;
+    color: $title;
+    padding-bottom: 26px;
+    border-bottom: 1px solid gray;
+    border-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.15) 48.33%,
+      rgba(255, 255, 255, 0) 100.87%
+    );
+    border-image-slice: 1;
+  }
+
+  &__item {
+    margin-top: 15px;
+    display: flex;
+    gap: 15px;
+    row-gap: 20px;
+
+    svg {
+      stroke: #6d9c74;
+    }
+
+    &-title {
+      font-family: "Gilroy-Regular";
+      font-weight: 400;
+      font-size: 14px;
+      color: $text;
+    }
+
+    &-link {
+      margin-top: 7px;
+      display: block;
+      max-width: 391px;
+      font-family: "Gilroy-Regular";
+      font-weight: 600;
+      font-size: 16px;
+      color: $title;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    margin-top: 28px;
+    padding-top: 17px;
+    border-top: 1px solid gray;
+    border-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.15) 48.33%,
+      rgba(255, 255, 255, 0) 100.87%
+    );
+    border-image-slice: 1;
+    gap: 33px;
+    align-items: center;
+  }
+
+  &__btn {
+    padding: 22px 30px 21px;
+    border-radius: 10px;
+    border: 0;
+    background: linear-gradient(114.93deg, #618967 5.11%, #72a479 94%);
+    font-family: "Proxima Nova Condensed";
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 15.83px;
+    color: $title;
+  }
+
+  &__call {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      font-family: "Gilroy-Bold";
+      font-size: 23px;
+      font-weight: 700;
+      line-height: 27.81px;
+      color: $title;
+    }
+
+    span {
+      font-family: "Gilroy-Regular";
+      font-weight: 400;
+      font-size: 13px;
+      text-align: right;
+      color: $text;
+    }
+  }
+
+  &__bot {
+    display: flex;
+    margin-top: 30px;
+    gap: 26px;
+    justify-content: center;
+
+    &-links {
+      display: flex;
+      gap: 10.69px;
+    }
+
+    &-title {
+      font-family: "Gilroy-Light";
+      font-weight: 600;
+      font-size: 16px;
+      color: $title;
+    }
+  }
+}
+
+@media (max-width:700px) {
+  .map {
+    &__wrap {
+      left: 15px;
+    }
+  }
+}
+
+@media (max-width:540px) {
+  .map {
+    &__wrap {
+      display: none;
+    }
+  }
+}

@@ -42,8 +42,7 @@ fetch("./menu.json")
             });
             minusBtn.addEventListener("click", function () {
               findCard.counter--;
-              cardCounter.innerText = findCard.counter;
-              if (findCard.counter <= 0) {
+              if (findCard.counter == 0 || findCard.counter < 0) {
                 item.classList.remove("card-active");
                 minusBtn.classList.remove("new-active");
                 plusBtn.classList.remove("new-active");
@@ -53,6 +52,8 @@ fetch("./menu.json")
                 const index = localDishes.indexOf(findCard);
                 if (index !== -1) localDishes.splice(index, 1);
               }
+              cardCounter.innerText = findCard.counter;
+
               updateStorage();
             });
             localDishes.push(findCard);

@@ -7,42 +7,105 @@ fetch("./menu.json")
     const contentCold = document.querySelector(".cold__dishes");
     const contentHot = document.querySelector(".hot__dishes");
     const contentMeat = document.querySelector(".meat__dishes");
-    console.log(localDishes);
     const spanFilter = document.querySelectorAll(".nav__list-item");
-    console.log(spanFilter);
     const titleCategory = document.querySelector(".cold__title-item");
-    console.log(titleCategory);
 
     function onClickCard() {
       const allCards = document.querySelectorAll(".cold__catalog-card");
 
       allCards.forEach((item) => {
         const addBtn = item.querySelector(".cold__catalog-card-btn");
-
+        const dishId = addBtn.getAttribute("data-id");
+        
         addBtn.addEventListener("click", function () {
-          const dishId = addBtn.getAttribute("data-id");
           const findCard = menuDataArr.find((item) => item.id == dishId);
-          const existDish = localDishes.find((item) => item.id === findCard.id);
           const cardCounter = item.querySelector(".cold__catalog-card-number");
           const minusBtn = item.querySelector(".cold__catalog-card-minus");
           const plusBtn = item.querySelector(".cold__catalog-card-plus");
+          const existDish = localDishes.find((item) => item.id === findCard.id);
 
-          if (existDish) {
-            existDish.counter++;
-            cardCounter.innerText = existDish.counter;
-          } else {
+          function btnCounter() {
             findCard.counter = 1;
             cardCounter.classList.add("number-active");
             item.classList.add("card-active");
             addBtn.style.display = "none";
             minusBtn.classList.add("new-active");
             plusBtn.classList.add("new-active");
+            function updateStorage() {
+              localStorage.setItem("dishes", JSON.stringify(localDishes));
+            }
+
+            plusBtn.addEventListener("click", function () {
+              findCard.counter++;
+              cardCounter.innerText = findCard.counter;
+              updateStorage();
+            });
+            minusBtn.addEventListener("click", function () {
+              findCard.counter--;
+              cardCounter.innerText = findCard.counter;
+              if (findCard.counter <= 0) {
+                item.classList.remove("card-active");
+                minusBtn.classList.remove("new-active");
+                plusBtn.classList.remove("new-active");
+                addBtn.style.display = "flex";
+                cardCounter.classList.remove("number-active");
+
+                const index = localDishes.indexOf(findCard);
+                if (index !== -1) localDishes.splice(index, 1);
+              }
+              updateStorage();
+            });
             localDishes.push(findCard);
+            updateStorage();
           }
-          localStorage.setItem("dishes", JSON.stringify(localDishes));
+          btnCounter();
         });
       });
     }
+    function renderDishes() {
+      localDishes.forEach((savedDish) => {
+          const card = document.querySelector(`.cold__catalog-card-btn[data-id="${savedDish.id}"]`).closest(".cold__catalog-card");
+  
+          if (card) {
+              const addBtn = card.querySelector(".cold__catalog-card-btn");
+              const cardCounter = card.querySelector(".cold__catalog-card-number");
+              const minusBtn = card.querySelector(".cold__catalog-card-minus");
+              const plusBtn = card.querySelector(".cold__catalog-card-plus");
+  
+              cardCounter.innerText = savedDish.counter;
+              cardCounter.classList.add("number-active");
+              card.classList.add("card-active");
+              addBtn.style.display = "none";
+              minusBtn.classList.add("new-active");
+              plusBtn.classList.add("new-active");
+  
+              plusBtn.addEventListener("click", function () {
+                  savedDish.counter++;
+                  cardCounter.innerText = savedDish.counter;
+                  localStorage.setItem("dishes", JSON.stringify(localDishes));
+              });
+  
+              minusBtn.addEventListener("click", function () {
+                  savedDish.counter--;
+                  cardCounter.innerText = savedDish.counter;
+  
+                  if (savedDish.counter <= 0) {
+                      card.classList.remove("card-active");
+                      minusBtn.classList.remove("new-active");
+                      plusBtn.classList.remove("new-active");
+                      addBtn.style.display = "flex";
+                      cardCounter.classList.remove("number-active");
+  
+                      const index = localDishes.indexOf(savedDish);
+                      if (index !== -1) localDishes.splice(index, 1);
+                  }
+  
+                  localStorage.setItem("dishes", JSON.stringify(localDishes));
+              });
+          }
+      });
+  }
+  
 
     function renderMenu(items, container) {
       container.innerHTML = "";
@@ -72,13 +135,13 @@ fetch("./menu.json")
               <div class="cold__catalog-card-plus">
                 <img src="./imgs/plus.svg" alt="plus" />
                </div>
-            <button data-id=${item.id} class="cold__catalog-card-btn">
+            <button data-id="${item.id}" class="cold__catalog-card-btn">
                 В корзину
                 <img src="./imgs/Cart.svg" alt="" />
             </button>
         </div>
     </div>
-</div>`;
+  </div>`;
       });
     }
     const coldDishes = menuDataArr.filter((item) =>
@@ -96,17 +159,20 @@ fetch("./menu.json")
     renderMenu(coldDishes, contentCold);
     renderMenu(hotDishes, contentHot);
     renderMenu(meatDishes, contentMeat);
+    renderDishes()
     onClickCard();
-    spanFilter.forEach(span => {
-        span.addEventListener('click', () => {
-            const selectadCategory = span.getAttribute('data-category');
-            console.log("выбрана категория:", selectadCategory);
-            
-            titleCategory.textContent = selectadCategory;
-            const filteredData = menuDataArr.filter(item => item.category === selectadCategory);
-            renderMenu(filteredData, contentCold)
-        })
-    })
+    spanFilter.forEach((span) => {
+      span.addEventListener("click", () => {
+        const selectadCategory = span.getAttribute("data-category");
+        console.log("выбрана категория:", selectadCategory);
+
+        titleCategory.textContent = selectadCategory;
+        const filteredData = menuDataArr.filter(
+          (item) => item.category === selectadCategory
+        );
+        renderMenu(filteredData, contentCold);
+      });
+    });
   })
 
   .catch((error) => {

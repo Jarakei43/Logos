@@ -1,9 +1,15 @@
+body{
+  z-index:1;
+}
+
 .hero {
   height: 484px;
   background-image: url("../imgs/heroimage.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  z-index:1;
+  position: relative;
   &__content {
     max-width: 630px;
     padding: 77px 0 0 92px;
@@ -58,7 +64,16 @@
     }
   }
 }
-
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* затемнение */
+  z-index: 1; /* слой затемнения */
+}
 @media (max-width: 700px) {
   .hero {
     &__content {

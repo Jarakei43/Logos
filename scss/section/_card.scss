@@ -23,8 +23,86 @@
     display: flex;
     margin-bottom: 50px;
 
+    &-img {
+      width: 600px;
+      height: 400px;
+    }
+
     &-info:not(.card__item-info-bot-line) {
+      position: relative;
+      background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
       padding: 38px 151px 25px 50px;
-    } 
+    }
+
+    &-info-title {
+      font-family: "Gilroy-Bold";
+      font-weight: 700;
+      font-size: 25px;
+      color: $title;
+    }
+
+    &-info-description {
+      margin-top: 5px;
+      font-family: "Gilroy-Regular";
+      font-weight: 400;
+      font-size: 14px;
+      color: $text;
+    }
+
+    &-info-weight {
+      display: block;
+      font-family: "Gilroy-Regular";
+      font-weight: 400;
+      font-size: 14px;
+      color: $title;
+      padding-top: 113px;
+    }
+
+    &-info-wrap {
+      display: flex;
+      margin-top: 22px;
+      gap: 25px;
+      align-items: center;
+    }
+
+    &-info-price {
+      font-family: "Gilroy-Bold";
+      font-weight: 700;
+      font-size: 25px;
+      color: $title;
+    }
+
+    &-info-bot {
+      &-name {
+        margin: 30px 0px 5px;
+        display: flex;
+        gap: 50px;
+        li {
+          font-family: "Gilroy-Light";
+          font-weight: 300;
+          font-size: 12px;
+          color: $title;
+        }
+      }
+
+      &-line {
+        position: absolute;
+        left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+      }
+
+      &-num {
+        padding-top: 5px;
+        display: flex;
+        gap: 68px;
+        li {
+          font-family: "Gilroy-Medium";
+          font-weight: 500;
+          font-size: 12px;
+          color: $title;
+        }
+      }
+    }
   }
 }

@@ -14,8 +14,13 @@ fetch("./menu.json")
       const allCards = document.querySelectorAll(".cold__catalog-card");
 
       allCards.forEach((item) => {
+        const cardLink = item.querySelector(".cold__catalog-card-link");
         const addBtn = item.querySelector(".cold__catalog-card-btn");
         const dishId = addBtn.getAttribute("data-id");
+
+        // cardLink.addEventListener("click", function () {
+          
+        // });
 
         addBtn.addEventListener("click", function () {
           const findCard = menuDataArr.find((item) => item.id == dishId);
@@ -42,7 +47,7 @@ fetch("./menu.json")
             });
             minusBtn.addEventListener("click", function () {
               findCard.counter--;
-              if (findCard.counter == 0 || findCard.counter < 0) {
+              if (findCard.counter == 0) {
                 item.classList.remove("card-active");
                 minusBtn.classList.remove("new-active");
                 plusBtn.classList.remove("new-active");
@@ -92,7 +97,7 @@ fetch("./menu.json")
             savedDish.counter--;
             cardCounter.innerText = savedDish.counter;
 
-            if (savedDish.counter <= 0) {
+            if (savedDish.counter == 0) {
               card.classList.remove("card-active");
               minusBtn.classList.remove("new-active");
               plusBtn.classList.remove("new-active");
@@ -120,9 +125,11 @@ fetch("./menu.json")
       container.innerHTML = "";
       items.forEach((item) => {
         container.innerHTML += ` 
-                 <div class="cold__catalog-card swiper-slide">
-                    <div class="cold__catalog-card-number">1</div>
-                 <img src="${item.imgUrl}" class="cold__catalog-card-img" alt="img__name"/>
+                <div class="cold__catalog-card swiper-slide">
+                  <div class="cold__catalog-card-number">1</div>
+                <a class="cold__catalog-card-link" href="./pages/card.html?id=${item.id}">
+                  <img src="${item.imgUrl}" class="cold__catalog-card-img" alt="img__name"/> 
+                </a>
                 <div class="cold__catalog-card-info">
                   <div class="cold__catalog-card-top">
                   <h3 class="cold__catalog-card-title">${item.name}</h3>

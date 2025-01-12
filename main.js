@@ -42,7 +42,7 @@ fetch("./menu.json")
                </div>
             <button data-id=${item.id} class="cold__catalog-card-btn">
                 В корзину
-                <img src="./imgs/Cart.svg" alt="" />
+                <img  class="btn__img" src="./imgs/Cart.svg" alt="" />
             </button>
         </div>
     </div>
@@ -56,59 +56,64 @@ BasketBtns.forEach(btn=>{
     console.log(ItemId);
   }) 
 })
- 
+
       });
+    
     }
 
     function onClickCard() {
       const allCards = document.querySelectorAll(".cold__catalog-card");
+      console.log(allCards)
       console.log("Stored dishes in localStorage:", localStorage.getItem("dishes"));
       allCards.forEach((item) => {
         const addBtn = item.querySelector(".cold__catalog-card-btn");
         console.log(addBtn)
-
-        addBtn.addEventListener("click", function () {
-          const dishId = addBtn.getAttribute("data-id");
-          const findCard = menuDataArr.find((item) => item.id == dishId);
-          const existDish = localDishes.find((item) => item.id === findCard.id);
-          const cardCounter = item.querySelector(".cold__catalog-card-number");
-          const minusBtn = item.querySelector(".cold__catalog-card-minus");
-          const plusBtn = item.querySelector(".cold__catalog-card-plus");
-          if (existDish) {
-            existDish.counter++;
-            cardCounter.innerText = existDish.counter;
-            console.log(cardCounter)
-            console.log(minusBtn)
-            console.log(plusBtn)
-            console.log(item)
-            console.log(addBtn)
-            cardCounter.classList.add("number-active");
+        const ImgBtn=addBtn.querySelector(".btn__img")
+        const dishId = addBtn.getAttribute("data-id");
+        const findCard = menuDataArr.find((item) => item.id == dishId);
+        const existDish = localDishes.find((item) => item.id === findCard.id);
+        const cardCounter = item.querySelector(".cold__catalog-card-number");
+        const minusBtn = item.querySelector(".cold__catalog-card-minus");
+        const plusBtn = item.querySelector(".cold__catalog-card-plus");
+        if(existDish){
+          cardCounter.classList.add("number-active");
+          cardCounter.innerText = existDish.counter;
             item.classList.add("card-active");
             addBtn.style.display = "none";
             minusBtn.classList.add("new-active");
             plusBtn.classList.add("new-active");
-          } else {
-            console.log(cardCounter)
-            console.log(minusBtn)
-            console.log(plusBtn)
-            console.log(item)
-            console.log(addBtn)
-            findCard.counter = 1;
+        }
+        
+   addBtn.addEventListener("click", function () {
+    console.log(plusBtn)
+    cardCounter.style.display="block";
+    minusBtn.style.display="block";
+    plusBtn.style.display="block";
+    addBtn.style.display="none";
+          if (existDish) {
+            existDish.counter++;
+            cardCounter.innerText = existDish.counter;
             cardCounter.classList.add("number-active");
             item.classList.add("card-active");
-            addBtn.style.display = "none";
+            minusBtn.classList.add("new-active");
+            plusBtn.classList.add("new-active");
+          } else {
+            findCard.counter = 1;
+            cardCounter.innerText =  findCard.counter;
+            cardCounter.classList.add("number-active");
+            item.classList.add("card-active");
             minusBtn.classList.add("new-active");
             plusBtn.classList.add("new-active");
             localDishes.push(findCard);
           }
           localStorage.setItem("dishes", JSON.stringify(localDishes));
-
-          PlusCounter(plusBtn,cardCounter,findCard);
-          MinusCounter(minusBtn,cardCounter);
           UpdateCounter();
-
+         
          
         });
+        PlusCounter(plusBtn,cardCounter,findCard);
+        MinusCounter(minusBtn,cardCounter,addBtn,plusBtn);
+        UpdateCounter();
       });
     }
 
@@ -130,9 +135,9 @@ BasketBtns.forEach(btn=>{
           UpdateCounter();
         });
       }
-      
-    function MinusCounter(minusBtn,cardCounter){
-      minusBtn.addEventListener('click',function(){
+    
+    function MinusCounter(minusBtn,cardCounter,addBtn,plusBtn){
+      minusBtn.onclick=function(){
         const GetMinusId=minusBtn.getAttribute('data-id')
         console.log(GetMinusId)
          localDishes.forEach(item=>{
@@ -141,18 +146,31 @@ BasketBtns.forEach(btn=>{
             item.counter--;
             cardCounter.textContent=item.counter
             if(item.counter==0){
-              const FindIndex=localDishes.findIndex(item=>item.id==GetMinusId)
+              cardCounter.style.display="none";
+              minusBtn.style.display="none";
+              plusBtn.style.display="none";
+              addBtn.style.display="block";
+              addBtn.style.width="135px";
+              addBtn.style.height="44px";
+              addBtn.style.display="flex";
+              addBtn.style.whiteSpace = "nowrap"
+            const FindIndex=localDishes.findIndex(item=>item.id==GetMinusId)
               console.log(FindIndex)
               localDishes.splice(Number(FindIndex),1)
+             
+             
                } 
+
            } 
            
           }
          })
          localStorage.setItem("dishes", JSON.stringify(localDishes));
          UpdateCounter();
-      })
+      }
      }
+ 
+   
 
   const HeroSection=document.querySelector('.hero')
  const ColdSection=document.querySelector('.cold')

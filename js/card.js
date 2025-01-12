@@ -1,15 +1,16 @@
+const localDishes = JSON.parse(localStorage.getItem("dishes")) || [];
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
+console.log(localDishes);
 
 fetch("../menu.json")
-    .then((response) => response.json())
-    .then((data) => {
-        const cardData = data.LogosMenu
-        const findCard = cardData.find(item => item.id == id)
-        const card = document.querySelector(".card-container");
-        console.log(findCard);
-        if (findCard) {
-            card.innerHTML = `<div class="card__content">
+  .then((response) => response.json())
+  .then((data) => {
+    const cardData = data.LogosMenu;
+    const findCard = cardData.find((item) => item.id == id);
+    const card = document.querySelector(".card-container");
+    if (findCard) {
+      card.innerHTML = `<div class="card__content">
             <div class="card__title">
               <img src="../imgs/left-arrow.svg" alt="left arrow" />
               <a href="../index.html" class="card__title-item">Вернуться назад</a>
@@ -47,6 +48,30 @@ fetch("../menu.json")
                 </div>
               </div>
             </div>
-          </div>`
-        }
-    });
+          </div>`;
+
+      const cardBtn = document.querySelector(".card__item-info-btn");
+      const isExist = localDishes.find((item) => item.id === findCard.id);
+
+      if (isExist) {
+        cardBtn.style.paddingLeft = "15px";
+        cardBtn.style.cursor = "not-allowed";
+        cardBtn.textContent = "Товар в корзине";
+      } else {
+        cardBtn.addEventListener("click", () => {
+          findCard.counter = 1;
+          localDishes.push(findCard);
+          localStorage.setItem("dishes", JSON.stringify(localDishes));
+          cardBtn.style.paddingLeft = "15px";
+          cardBtn.style.cursor = "not-allowed";
+          cardBtn.textContent = "Товар в корзине";
+        });
+      }
+    }
+  });
+
+function UpdateCounter() {
+  const HeaderCounter = document.querySelector(".header__btn span");
+  HeaderCounter.textContent = localDishes.length;
+}
+UpdateCounter();

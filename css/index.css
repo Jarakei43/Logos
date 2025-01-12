@@ -24,6 +24,8 @@ a {
 }
 
 body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   background: linear-gradient(360deg, #211f20 0%, #44403f 100%);
   font-family: "Proxima Nova Condensed", sans-serif;
   font-family: "Zing Rust Demo Base", sans-serif;
@@ -42,6 +44,10 @@ body {
 .card-container {
   max-width: 1210px;
   margin: 0 auto;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 .modal {
@@ -1416,6 +1422,7 @@ body {
   color: #fff;
 }
 .header__intro {
+  cursor: pointer;
   color: white;
   font-size: 16px;
   font-family: Gilroy;

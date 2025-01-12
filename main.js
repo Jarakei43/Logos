@@ -18,16 +18,11 @@ fetch("./menu.json")
         const addBtn = item.querySelector(".cold__catalog-card-btn");
         const dishId = addBtn.getAttribute("data-id");
 
-        // cardLink.addEventListener("click", function () {
-          
-        // });
-
         addBtn.addEventListener("click", function () {
           const findCard = menuDataArr.find((item) => item.id == dishId);
           const cardCounter = item.querySelector(".cold__catalog-card-number");
           const minusBtn = item.querySelector(".cold__catalog-card-minus");
           const plusBtn = item.querySelector(".cold__catalog-card-plus");
-          const existDish = localDishes.find((item) => item.id === findCard.id);
 
           function btnCounter() {
             findCard.counter = 1;
@@ -116,7 +111,6 @@ fetch("./menu.json")
 
     function UpdateCounter() {
       const HeaderCounter = document.querySelector(".header__btn span");
-      console.log(localDishes);
       HeaderCounter.textContent = localDishes.length;
     }
     UpdateCounter();
@@ -272,6 +266,8 @@ fetch("./menu.json")
     const MainPart = document.querySelector("main");
     const WholeBody = document.querySelector("body");
 
+/*************  ✨ Codeium Command ⭐  *************/
+/******  2db1e3f6-0cd1-4b1b-b819-4e6237d2e87c  *******/
     function ClickHeaderBtn() {
       const HeaderBtn = document.querySelector(".header__btn");
       HeaderBtn.addEventListener("click", function () {

@@ -2,13 +2,17 @@ fetch("./menu.json")
     .then(response => response.json())
     .then(menuData => {
         const contentCold = document.querySelector('.cold__dishes');
-        const contentHot = document.querySelector('.hot__dishes');
-        const contentMeat = document.querySelector('.meat__dishes');
-
+     
         const spanFilter = document.querySelectorAll('.nav__list-item');
         console.log(spanFilter);
         const titleCategory = document.querySelector('.cold__title-item');
         console.log(titleCategory);
+
+        const categoryHot = document.querySelector('.hot__content');
+        categoryHot.style.display = 'none';
+
+        const categoryMeat = document.querySelector('.meat__content');
+        categoryMeat.style.display = 'none';
 
         function renderMenu(items, container) {
             container.innerHTML = '';
@@ -50,15 +54,12 @@ fetch("./menu.json")
         }
         const allData = menuData.LogosMenu;
         const coldDishes = allData.filter(item => ["Холодные закуски", "Супы"].includes(item.category));
-        const hotDishes = allData.filter(item => ["Горячие закуски", "Рыбные блюда", "Фирменные блюда"].includes(item.category));
-        const meatDishes = allData.filter(item => ["Мясные блюда", "Гриль меню",].includes(item.category));
-
         renderMenu(coldDishes, contentCold);
-        renderMenu(hotDishes, contentHot);
-        renderMenu(meatDishes, contentMeat);
 
         spanFilter.forEach(span => {
             span.addEventListener('click', () => {
+               
+
                 const selectadCategory = span.getAttribute('data-category');
                 console.log("выбрана категория:", selectadCategory);
 

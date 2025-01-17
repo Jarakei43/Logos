@@ -358,13 +358,18 @@ body {
   height: 3px;
   box-shadow: 0 5px 12px 0 rgba(114, 164, 121, 0.3);
 }
-.nav__list-item:hover span {
+/* .nav__list-item:hover span {
   font-weight: 500;
   color: #fff;
 }
 .nav__list-item:hover div {
   background: #618967;
-}
+} */
+ .active-span{
+  transition: 1s;
+  padding-bottom: 26px;
+  border-bottom: #618967 solid 3px;
+ }
 
 @media (max-width: 1368px) {
   .nav__content {

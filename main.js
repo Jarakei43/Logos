@@ -3,13 +3,10 @@ fetch("./menu.json")
     .then(menuData => {
         const contentCold = document.querySelector('.cold__dishes');
         const titleCategory = document.querySelector('.cold__title-item');
-
         const categoryHot = document.querySelector('.hot__content');
         categoryHot.style.display = 'none';
-
         const categoryMeat = document.querySelector('.meat__content');
         categoryMeat.style.display = 'none';
-
         function renderMenu(items, container) {
             container.innerHTML = '';
             items.forEach((item) => {
@@ -51,7 +48,6 @@ fetch("./menu.json")
         const allData = menuData.LogosMenu;
         const coldDishes = allData.filter(item => ["Холодные закуски", "Супы"].includes(item.category));
         renderMenu(coldDishes, contentCold);
-
         const spanFilter = document.querySelectorAll(".nav__list-item")
         const filterSpan = document.querySelectorAll('.nav__acc');
         filterSpan[0].classList.add("active-span")
@@ -67,19 +63,14 @@ fetch("./menu.json")
             let selectadCategory = "Холодные закуски";
             span.addEventListener('click', (event) => {
                 event.preventDefault()
-
                 selectadCategory = span.getAttribute('data-category');
                 console.log("выбрана категория:", selectadCategory);
-
                 titleCategory.textContent = selectadCategory;
                 const filteredData = allData.filter(item => item.category === selectadCategory);
                 renderMenu(filteredData, contentCold)
-
             })
-
             console.log("выбрана категория:", selectadCategory);
         })
-
     })
     .catch((error) => {
         console.error("Ошибка при получении данных:", error);

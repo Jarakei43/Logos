@@ -34,16 +34,15 @@
       height: 3px;
       box-shadow: 0 5px 12px 0 rgba(114, 164, 121, 0.3);
     }
-
-    &-item:hover {
-      span {
-        font-weight: 500;
-        color: $title;
-      }
-      div {
-        background: #618967;
-      }
-    }
+    // &-item:hover {
+    //   span {
+    //     font-weight: 500;
+    //     color: $title;
+    //   }
+    //   div {
+    //     background: #618967;
+    //   }
+    // }
   }
 }
 
@@ -55,10 +54,32 @@
   }
 }
 
-@media (max-width:1298px) {
+@media (max-width: 1298px) {
   .nav {
     &__content {
       overflow-x: scroll;
     }
   }
 }
+.active-span{
+  padding-bottom: 26px;
+  border-bottom: #618967 solid 3px;
+ }
+// .nav__list-item {
+//   position: relative;
+//   text-decoration: none;
+// }
+
+// .nav__list-line {
+//   height: 2px;
+//   background-color: transparent;
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   transition: background-color 0.3s ease; 
+// }
+
+// .nav__list-item.active .nav__list-line {
+//   background-color: green;
+// }

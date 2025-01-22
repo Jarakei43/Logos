@@ -385,13 +385,6 @@ body {
   height: 3px;
   box-shadow: 0 5px 12px 0 rgba(114, 164, 121, 0.3);
 }
-.nav__list-item:hover span {
-  font-weight: 500;
-  color: #fff;
-}
-.nav__list-item:hover div {
-  background: #618967;
-}
 
 @media (max-width: 1368px) {
   .nav__content {
@@ -403,6 +396,11 @@ body {
     overflow-x: scroll;
   }
 }
+.active-span {
+  padding-bottom: 26px;
+  border-bottom: #618967 solid 3px;
+}
+
 .cold {
   overflow: hidden;
 }
@@ -431,6 +429,7 @@ body {
   margin-bottom: 50px;
 }
 .cold__catalog-card {
+  width: 292px;
   height: 385px;
   position: relative;
   background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
@@ -515,6 +514,10 @@ body {
 }
 .cold__catalog-card-minus, .cold__catalog-card-plus {
   box-shadow: 0 5px 10px 0 rgba(114, 163, 121, 0.7);
+}
+
+.swiper-wrapper {
+  gap: 16px;
 }
 
 .number-active {

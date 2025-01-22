@@ -25,6 +25,7 @@
     margin-bottom: 50px;
 
     &-card {
+      width: 292px;
       height: 385px;
       position: relative;
       background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
@@ -89,6 +90,10 @@
       }
     }
   }
+}
+
+.swiper-wrapper{
+  gap: 16px;
 }
 
 .number-active {

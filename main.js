@@ -671,30 +671,33 @@ fetch("./menu.json")
     renderMenu(meatDishes, contentMeat);
     renderDishes();
     onClickCard();
-    spanFilter.forEach((span) => {
-      span.addEventListener("click", () => {
-        const selectadCategory = span.getAttribute("data-category");
-        console.log("выбрана категория:", selectadCategory);
-
-        titleCategory.textContent = selectadCategory;
-        const filteredData = menuDataArr.filter(
-          (item) => item.category === selectadCategory
-        );
-        renderMenu(filteredData, contentCold);
-      });
-    });
-    spanFilter.forEach((span) => {
-      span.addEventListener("click", () => {
-        const selectadCategory = span.getAttribute("data-category");
-        console.log("выбрана категория:", selectadCategory);
-
-        titleCategory.textContent = selectadCategory;
-        const filteredData = menuDataArr.filter(
-          (item) => item.category === selectadCategory
-        );
-        renderMenu(filteredData, contentCold);
-      });
-    });
+        const categoryHot = document.querySelector('.hot__content');
+        categoryHot.style.display = 'none';
+        const categoryMeat = document.querySelector('.meat__content');
+        categoryMeat.style.display = 'none';
+    
+        const filterSpan = document.querySelectorAll('.nav__acc');
+        filterSpan[0].classList.add("active-span")
+        filterSpan.forEach((item) => {
+            item.addEventListener("click", () => {
+                event.preventDefault()
+                
+                filterSpan.forEach(item => item.classList.remove("active-span"))
+                item.classList.add("active-span")
+            })
+        })
+        spanFilter.forEach((span) => {
+            let selectadCategory = "Холодные закуски";
+            span.addEventListener('click', (event) => {
+                event.preventDefault()
+                selectadCategory = span.getAttribute('data-category');
+                console.log("выбрана категория:", selectadCategory);
+                titleCategory.textContent = selectadCategory;
+                const filteredData = menuDataArr.filter(item => item.category === selectadCategory);
+                renderMenu(filteredData, contentCold)
+            })
+            console.log("выбрана категория:", selectadCategory);
+        })
   })
 
   .catch((error) => {

@@ -1,0 +1,92 @@
+.agreement {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 320px 90px 320px;
+
+
+    &__content {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+        border-radius: 10px;
+        padding: 20px;
+        border-radius: 10px;
+        width: 800px;
+        justify-content: space-between
+    }   
+
+    &__checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-family);
+        font-size: 13px;
+        font-weight: 500;
+        color: #fff;
+        line-height: 1.5;
+
+        .checkbox__input {
+            display: none;
+        }
+
+        .checkbox__custom {
+            width: 20px;
+            height: 20px;
+
+            border-radius: 5px;
+            background: #fff;
+            position: relative;
+            cursor: pointer;
+
+            &:after {
+                content: "";
+                display: none;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -60%) rotate(-135deg);
+                width: 10px;
+                height: 6px;
+                border: solid #72a479;
+                border-width: 0 2px 2px 0;
+            }
+        }
+
+        .checkbox__input:checked + .checkbox__custom {
+            background: #fff;
+
+            &:after {
+                display: block;
+            }
+        }
+
+        .agreement__link {
+            color: #72a479;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__button {
+        background: linear-gradient(133deg, #618967 0%, #72a479 100%);
+        color: #fff;
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        padding: 17px 50px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+
+
+        &:hover {
+            background: linear-gradient(133deg, #618967 0%, #72a479 100%);
+        }
+    }
+}

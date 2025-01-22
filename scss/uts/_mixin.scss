@@ -104,3 +104,9 @@
   font-size: $fs;
   color: $title;
 }
+
+@mixin cart-title ($weight, $size){
+  font-family: "Gilroy-Bold";
+  font-weight: $weight;
+  font-size: $size;
+}

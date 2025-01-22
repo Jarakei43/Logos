@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/index.css">
+    <title>Cart</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <img class="header__burger" src="../imgs/burgerMenu.svg" alt="burger menu">
+                <form class="header__form">
+                    <div class="header__left">
+                        <a href="../index.html">
+                            <img class="header__logo logo" src="../imgs/LOGOS.svg" alt="logo">
+                        </a>
+                        <label class="header__form-item">
+                            <img class="header__form-location" src="../imgs/Location.svg" alt="location">
+                            <input type="text" placeholder="Введите адрес доставки" class="header__form-input">
+                            <img class="header__form-search" src="../imgs/Search.svg" alt="search">
+                        </label>
+                    </div>
+                    <a href="#" class="header__link">
+                        <img src="../imgs/Calling.svg" alt="Calling">
+                        <div class="header__call">
+                            <span>Контакты:</span>
+                            <b>+7 (917) 510-57-59</b>
+                        </div>
+                    </a>
+                </form>
+                <button class="header__btn">
+                    Корзина
+                    <div class="header__line"></div>
+                    <span>4</span>
+                    <img class="header__btn-cart" src="../imgs/Cart.svg" alt="cart">
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+
+      
+      
+
+        <section class="info">
+            <div class="container">
+                <div class="info__content">
+                    <div class="info__text">
+                        <button class="info__btn">
+                            <img src="../imgs/Arrow 8.svg" alt="arrow" class="info__btn-img"> в корзину
+                        </button>
+                        <div class="info__title-wrapper">
+                            <img src="../imgs/Rectangle 288.svg" alt="rectangle" class="info__icon">
+                            <h1 class="info__title">Оформление заказа</h1>
+                        </div>
+                    </div>
+                            <div class="night__modal">
+                                <div class="night__modal-wrap">
+                                    <h2 class="night__modal-title">Сегодня мы уже не доставляем.</h2>
+                                    <p class="night__modal-description">Заказы принимаем до 20:50, доставляем с 8:30 до 21:30</p>
+                                </div>
+                                <img src="../imgs/Group 272.svg" alt="night image" class="night__modal-img">
+                            </div>    
+                            
+                    <div class="info__card">
+                        <h2 class="info__card-title">1. Контактная информация</h2>
+                        <div class="info__card-inputs">
+                            <input type="text" class="info__card-input" placeholder="Имя*">
+                            <input type="text" class="info__card-input" placeholder="Телефон*">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="address">
+            <div class="container">
+                <div class="address__content">
+                    <div class="address__text">
+                        <h3 class="address__title">2. Доставка</h3>
+                        <div class="address__about">
+                            <button class="address__btn">Самовывоз</button>
+                            <button class="address__btn">Доставка</button>
+                            <p class="address__p"> <img src="../imgs/clock 1.svg" alt="clock" class="address__img">Доставим через 1 час 30 минут</p>
+                        </div>
+                        <div class="address__info">
+                            <h4 class="address__info-title">Адрес доставки</h4>
+                            <div class="address__info-first">
+                                <input type="text" class="address__info-inputs1" placeholder="Укажите улицу*">
+                                <input type="text" class="address__info-inputs2" placeholder="Номер дома*">
+                            </div>
+                            <div class="address__info-second">
+                                <input type="text" class="address__info-inputs3" placeholder="№ квартиры/офиса">
+                                <input type="text" class="address__info-inputs4" placeholder="Подъезд">
+                                <input type="text" class="address__info-inputs5" placeholder="Этаж">
+                            </div>
+                            <div class="address__info-third">
+                                <input type="text" class="address__info-inputs6" placeholder="Комментарий">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="payment">
+            <div class="container">
+                <div class="payment__content">
+                    <div class="payment__text">
+                        <h3 class="payment__title">3. Оплатить</h3>
+                        <div class="payment__options">
+                            <button class="payment__btn">Оплата онлайн</button>
+                            <button class="payment__btn">Курьеру картой</button>
+                            <button class="payment__btn active">Наличными</button>
+                        </div>
+                        <div class="payment__cash">
+                            <input type="text" id="change" class="change__input" placeholder="Сдача с">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="order">
+            <div class="container">
+                    <div class="order__content">
+                        <h3 class="order__title">4. Когда доставить</h3>
+                        <div class="order__options">
+                            <div class="order__btn-group">
+                                <button class="order__btn">В ближайшее время</button>
+                                <button class="order__btn active">Ко времени</button>
+                            </div>
+                            <input type="text" class="time__input" placeholder="Укажите время">
+                        </div>
+                        <div class="order__time">
+                            <label for="persons">Кол-во персон</label>
+                            <div class="persons__controls">
+                              <button class="persons__btn" id="decrease">-</button>
+                              <div class="time__input">1</div>
+                              <button class="persons__btn" id="increase">+</button>
+                            </div>
+                          </div>
+                          
+                        <div class="order__call">
+                            <p>Хотите мы позвоним?</p>
+                            <label>
+                                <input type="radio" name="callback" value="no" checked>
+                                Не перезванивать
+                            </label>
+                            <label>
+                                <input type="radio" name="callback" value="yes">
+                                Потребуется звонок оператора
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+        <section class="agreement">
+            <div class="container">
+                <div class="agreement__content">
+                    <label class="agreement__checkbox">
+                        <input type="checkbox" class="checkbox__input">
+                        <span class="checkbox__custom"></span>
+                        Я согласен на обработку моих перс. данных в соответствии с 
+                        <a href="#" class="agreement__link">Условиями</a>
+                    </label>
+                    <button class="agreement__button">Оформить заказ</button>
+                </div>
+            </div>
+           
+        </section>
+        
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <img src="../imgs/footerArrow.svg" class="footer__arrow" alt="arrow">
+                <div class="footer__info">
+                    <img src="../imgs/LOGOS.svg" alt="LOGOS" class="footer__logo">
+                    <span class="footer__copyright">© ООО СК «АПШЕРОН» Все права защищены. 2010-2020</span>
+                    <ul class="footer__info-list">
+                        <li class="footer__info-list-item">Пользовательское соглашение</li>
+                        <li class="footer__info-list-item">Карта сайта</li>
+                        <li class="footer__info-list-item">Политика конфиденциальности</li>
+                    </ul>
+                </div>
+                <ul class="footer__links-list">
+                    <li class="footer__links-list-item">О ресторане</li>
+                    <li class="footer__links-list-item">Условия доставки</li>
+                    <li class="footer__links-list-item">Возврат товара</li>
+                    <li class="footer__links-list-item">Акции</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+<script src="../main.js"></script>
+</html>

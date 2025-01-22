@@ -355,7 +355,7 @@ fetch("./menu.json")
                      <p class="total__min-price">Минимальная сумма заказа 1500 ₽</p>
                  </div>
                  <div class="total__btn">
-                     <button class="total__apply">Оформить заказ</button>
+                     <button class="total__apply"><a href="./pages/order.html">Оформить заказ</a></button>
                  </div>
              </div>
          </div>
@@ -758,3 +758,99 @@ fetch("./menu.json")
   .catch((error) => {
     console.error("Ошибка при получении данных:", error);
   });
+
+const currentDate = new Date();
+const currentTime = currentDate.getHours() * 60 + currentDate.getMinutes();
+const startTime = 8 * 60 + 30;
+const endTime = 20 * 60 + 50;
+const modalNight = document.querySelector(".night__modal");
+
+function nightActive() {
+  if (currentTime >= startTime && currentTime <= endTime) {
+    modalNight.style.display = "none";
+  } else {
+    modalNight.style.display = "flex";
+  }
+}
+nightActive();
+
+// счетчик кол-во персон
+document.addEventListener("DOMContentLoaded", () => {
+  const decreaseBtn = document.getElementById("decrease");
+  const increaseBtn = document.getElementById("increase");
+  const timeInput = document.querySelector(".time__input");
+
+  let count = parseInt(timeInput.textContent, 10);
+
+  decreaseBtn.addEventListener("click", () => {
+    if (count > 1) {
+      count--;
+      timeInput.textContent = count;
+    }
+  });
+
+  increaseBtn.addEventListener("click", () => {
+    count++;
+    timeInput.textContent = count;
+  });
+});
+
+// активация кнопок
+// Получаем кнопки и элемент с инпутом
+const cashBtn = document.getElementById("cashBtn");
+const cashInput = document.getElementById("cashInput");
+const paymentBtns = document.querySelectorAll(".payment__btn");
+
+function hideInput() {
+  cashInput.style.display = "none";
+}
+
+function showInput() {
+  cashInput.style.display = "flex";
+}
+
+paymentBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    paymentBtns.forEach((button) => {
+      button.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+
+    if (btn === cashBtn) {
+      showInput();
+    } else {
+      hideInput();
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".order__btn");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((btn) => btn.classList.remove("active"));
+
+      button.classList.add("active");
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const immediateBtn = document.querySelector(".order__btn:first-child");
+  const specificBtn = document.querySelector(".order__btn:last-child");
+  const timeInput = document.querySelector(".time__input");
+
+  immediateBtn.addEventListener("click", () => {
+    timeInput.classList.add("hidden");
+    immediateBtn.classList.add("active");
+    specificBtn.classList.remove("active");
+  });
+
+  specificBtn.addEventListener("click", () => {
+    timeInput.classList.remove("hidden");
+    specificBtn.classList.add("active");
+    immediateBtn.classList.remove("active");
+  });
+});

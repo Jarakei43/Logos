@@ -1,0 +1,181 @@
+.order {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  
+    .order__content {
+      border-radius: 10px;
+      width: 800px;
+      background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+      padding: 20px;
+    }
+  
+    .order__title {
+      font-family: var(--font-family);
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+      padding: 30px 30px 32px 30px;
+    }
+  
+    .order__options {
+      display: flex;
+      align-items: center;
+      gap: 10px; 
+      padding: 1px 15px 1px 30px;
+    }
+  
+    .order__btn-group {
+      display: flex;
+      gap: 0; 
+      border-radius: 10px;
+      width: 363px;
+      height: 59px;
+    }
+  
+    .order__btn {
+      flex: 1;
+      height: 50px;
+      background: #494544;
+      color: #fff;
+      border: 1px solid #555;
+      border-left: none;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid #72a479;
+  
+      &.active {
+        background: linear-gradient(133deg, #618967 0%, #72a479 100%);
+        font-family: var(--font-family);
+        font-weight: 700;
+        font-size: 16px;
+        color: #fff;
+      }
+  
+      &:hover {
+        background: #72a479;
+      }
+    }
+  
+    .order__btn:first-child {
+      border-radius: 5px 0 0 5px;
+    }
+  
+    .order__btn:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+  
+    .time__input {
+      flex: 1;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: px 40px 20px 31px;
+      background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+      color: #000;
+      font-size: 16px;
+    }
+  
+    .time__input:focus {
+      outline: none;
+      border-color: #4caf50; 
+    }
+  
+    .time__input.hidden {
+      display: none;
+    }
+  }
+  
+  .order__time {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+
+  
+    label {
+      font-size: 16px;
+      color: #fff;
+    }
+  
+    .persons__controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border: 1px solid #494544;
+      border-radius: 5px;
+
+      background: #494544;
+  
+      .persons__btn {
+        width: 30px;
+        height: 30px;
+        background: #494544;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+  
+      .time__input {
+        text-align: center;
+        border: none;
+        background: #494544;
+        color: #fff;
+        font-size: 16px;
+
+  
+        &:focus {
+          outline: none;
+          border-color: #4caf50;
+        }
+      }
+    }
+  }
+  
+  .order__call {
+    margin-top: 20px;
+    padding: 1px 400px 10px 30px; 
+  
+    p {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 10px;
+      font-family: var(--font-family);
+      font-weight: 700;
+    }
+  
+    label {
+      font-size: 16px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  
+      input[type="radio"] {
+        appearance: none;
+        width: 15px;
+        height: 15px;
+        border: 2px solid #72a479;
+        border-radius: 50%;
+        background: transparent;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:checked {
+          background: #72a479;
+        }
+      }
+    }
+  
+    label + label {
+      margin-top: 10px;
+    }
+  }
+  

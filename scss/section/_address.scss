@@ -1,0 +1,138 @@
+.address {
+    &__content {
+        margin: 0 auto;
+        border-radius: 10px;
+        background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+        padding: 20px;
+        margin-top: 30px;
+        max-width: 800px;
+    }
+
+    &__title {
+        @include cart-title(700, 18px);
+        color: $title;
+    }
+
+    &__about {
+        margin-top: 31px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &__btn {
+        border: 1px solid #72a479;
+        background: none;
+        border-radius: 10px;
+        padding: 20px 54px 20px 54px;
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 16px;
+        color: $title;
+        display: flex;
+        gap: 0px;
+        border: 1px solid #72a479;
+
+
+    }
+    &__p {
+        display: flex;
+        gap: 10px;
+        color: $title;
+        margin-left: 20px;
+        max-width: 258px;
+    }
+
+    &__info {
+        margin-top: 30px;
+
+        &-title {
+            color: $title;
+            @include cart-title(700, 18px);
+        }
+
+        &-first {
+            margin-top: 22px;
+            display: flex;
+            gap: 15px;
+        }
+
+        &-inputs1 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 21px 268px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &-inputs2 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 23px 10px 20px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &-second {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            max-width: 203px;
+        }
+
+        &-inputs3 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 21px 43px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &-inputs4 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 40px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &-inputs5 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 5px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+
+        &-third {
+            margin-top: 15px;
+        }
+
+        &-inputs6 {
+            background: none;
+            border-style: none;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 21px 469px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+        }
+    }
+
+}

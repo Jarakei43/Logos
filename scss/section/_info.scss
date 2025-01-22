@@ -1,0 +1,68 @@
+.info {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 20px;
+        margin: 0 auto;
+        padding: 20px;
+        max-width: 840px;
+    }
+    &__btn {
+        background: none;
+        border-style: none;
+        color: $title;
+        @include cart-title(700, 16px);
+
+        &-img {
+            width: 6px;
+            padding: 0 auto;
+        }
+    }
+
+    &__title-wrapper {
+        display: flex;
+        gap: 19px;
+        margin-top: 35px;
+    }
+
+    &__title {
+        @include cart-title(700, 32px);
+        color: $title;
+    }
+
+    &__card {
+
+        border-radius: 10px;
+        background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+        padding: 20px;
+        margin-top: 30px;
+        padding-bottom: 55px;
+
+        &-title {
+            @include cart-title(700, 18px);
+            color: $title;
+        }
+
+        &-inputs {
+            display: flex;
+            gap: 15px;
+            color: $title;
+
+        }
+
+        &-input {
+            margin-top: 31px;
+            background: none;
+            border-style: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 21px 180px 20px 30px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+
+        }
+    }
+
+}

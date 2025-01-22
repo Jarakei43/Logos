@@ -1,0 +1,100 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+
+  .payment__content {
+      border-radius: 10px;
+      width: 800px;
+      height: 249px;
+      background: linear-gradient(90deg, #494544 0%, #504b4a 100%);
+      padding: 20px;
+  }
+
+  .payment__text {
+      width: 100%;
+  }
+
+  .payment__title {
+      font-size: 18px;
+      color: #fff;
+      padding: 21px 666px 1px 29px;
+  }
+
+  .payment__options {
+      display: flex;
+      border-radius: 10px;
+      width: 551px;
+      padding: 33px 216px 2px 26px;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      color: #fff;
+  }
+
+  .payment__btn {
+      flex: 1;
+      height: 50px;
+      background: #494544;
+      color: #fff;
+      border: 1px solid #555;
+      border-left: none;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: var(--font-family);
+      font-weight: 500;
+      font-size: 16px;
+      border: 1px solid #72a479;
+
+      &:first-child {
+          border-radius: 5px 0 0 5px;
+      }
+
+      &:last-child {
+          border-radius: 0 5px 5px 0;
+      }
+
+      &.active {
+          background: linear-gradient(133deg, #618967 0%, #72a479 100%);
+          font-family: var(--font-family);
+          font-weight: 700;
+          font-size: 16px;
+          color: #fff;
+      }
+
+      &:hover {
+          background: #72a479;
+      }
+  }
+
+  .payment__cash {
+      display: none; /* Скрыто по умолчанию */
+      align-items: center;
+      gap: 10px;
+      padding: 23px;
+  }
+
+  .payment__btn.active[data-cash="true"] ~ .payment__cash {
+      display: flex; /* Показывается, если кнопка "Наличными" активна */
+  }
+
+  .change__input {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      width: 173px;
+      height: 60px;
+      background: #494544;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 16px;
+      color: #fff;
+      text-align: center;
+
+      &:focus {
+          outline: none;
+          border-color: #4caf50;
+      }
+  }
+}

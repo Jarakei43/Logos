@@ -110,6 +110,7 @@ body {
 }
 .header__form {
   display: flex;
+  position: relative;
 }
 .header__form-item {
   margin-left: 72px;
@@ -118,6 +119,12 @@ body {
   border-radius: 10px;
   padding: 14px 16px 14px 14px;
   background: #504b4a;
+  position: relative;
+}
+.header__form-search {
+  position: absolute;
+  right: 20px;
+  cursor: pointer;
 }
 .header__form-input {
   min-width: 210px;
@@ -126,18 +133,47 @@ body {
   margin-left: 10px;
   background: none;
   margin-right: 256px;
+  color: #fff;
+  width: 300px;
+  padding: 10px;
 }
 .header__form-input::-moz-placeholder {
-  color: #cfcfcf;
+  color: #b5b5b5;
   font-family: "Gilroy-Regular";
   font-weight: 400;
   font-size: 18px;
 }
 .header__form-input::placeholder {
-  color: #cfcfcf;
+  color: #b5b5b5;
   font-family: "Gilroy-Regular";
   font-weight: 400;
   font-size: 18px;
+}
+.header__form-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow: scroll;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 50px;
+  border-radius: 8px;
+  background: #504b4a;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  color: white;
+  padding: 10px 0;
+  z-index: 10;
+}
+.header__form-dropdown li {
+  cursor: pointer;
+  font-family: "Gillroy-Regular";
+  font-weight: 400;
+  font-size: 18px;
+  color: #fff;
+  margin-left: 48px;
 }
 .header__link {
   cursor: pointer;

@@ -266,8 +266,8 @@ fetch("./menu.json")
     const MainPart = document.querySelector("main");
     const WholeBody = document.querySelector("body");
 
-/*************  ✨ Codeium Command ⭐  *************/
-/******  2db1e3f6-0cd1-4b1b-b819-4e6237d2e87c  *******/
+    /*************  ✨ Codeium Command ⭐  *************/
+    /******  2db1e3f6-0cd1-4b1b-b819-4e6237d2e87c  *******/
     function ClickHeaderBtn() {
       const HeaderBtn = document.querySelector(".header__btn");
       HeaderBtn.addEventListener("click", function () {
@@ -671,33 +671,88 @@ fetch("./menu.json")
     renderMenu(meatDishes, contentMeat);
     renderDishes();
     onClickCard();
-        const categoryHot = document.querySelector('.hot__content');
-        categoryHot.style.display = 'none';
-        const categoryMeat = document.querySelector('.meat__content');
-        categoryMeat.style.display = 'none';
-    
-        const filterSpan = document.querySelectorAll('.nav__acc');
-        filterSpan[0].classList.add("active-span")
-        filterSpan.forEach((item) => {
-            item.addEventListener("click", () => {
-                event.preventDefault()
-                
-                filterSpan.forEach(item => item.classList.remove("active-span"))
-                item.classList.add("active-span")
-            })
-        })
-        spanFilter.forEach((span) => {
-            let selectadCategory = "Холодные закуски";
-            span.addEventListener('click', (event) => {
-                event.preventDefault()
-                selectadCategory = span.getAttribute('data-category');
-                console.log("выбрана категория:", selectadCategory);
-                titleCategory.textContent = selectadCategory;
-                const filteredData = menuDataArr.filter(item => item.category === selectadCategory);
-                renderMenu(filteredData, contentCold)
-            })
-            console.log("выбрана категория:", selectadCategory);
-        })
+    const categoryHot = document.querySelector(".hot__content");
+    categoryHot.style.display = "none";
+    const categoryMeat = document.querySelector(".meat__content");
+    categoryMeat.style.display = "none";
+
+    const filterSpan = document.querySelectorAll(".nav__acc");
+    filterSpan[0].classList.add("active-span");
+    filterSpan.forEach((item) => {
+      item.addEventListener("click", () => {
+        event.preventDefault();
+
+        filterSpan.forEach((item) => item.classList.remove("active-span"));
+        item.classList.add("active-span");
+      });
+    });
+    spanFilter.forEach((span) => {
+      let selectadCategory = "Холодные закуски";
+      span.addEventListener("click", (event) => {
+        event.preventDefault();
+        selectadCategory = span.getAttribute("data-category");
+        console.log("выбрана категория:", selectadCategory);
+        titleCategory.textContent = selectadCategory;
+        const filteredData = menuDataArr.filter(
+          (item) => item.category === selectadCategory
+        );
+        renderMenu(filteredData, contentCold);
+      });
+      console.log("выбрана категория:", selectadCategory);
+    });
+
+    const searchInput = document.getElementById("search__dishes");
+    console.log(searchInput);
+
+    const dropdownList = document.getElementById("dropdownList");
+    menuDataArr.forEach((item) => {
+      dropdownList.innerHTML += `
+        <li>${item.name}</li>
+      `;
+    });
+    const listItems = Array.from(dropdownList.getElementsByTagName("li"));
+    searchInput.addEventListener("input", () => {
+      searchInput.style.border = "0";
+      searchInput.style.borderTopLeftRadius = "10px";
+      searchInput.style.borderTopRightRadius = "10px";
+      searchInput.style.borderBottomLeftRadius = "0px";
+      searchInput.style.borderBottomRightRadius = "0px";
+      const filter = searchInput.value.toLowerCase();
+      let hasVisibleItems = false;
+
+      listItems.forEach((item) => {
+        if (item.textContent.toLowerCase().includes(filter)) {
+          item.style.display = "block";
+          hasVisibleItems = true;
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      dropdownList.style.display = "flex";
+    });
+
+    searchInput.addEventListener("blur", () => {
+      setTimeout(() => {
+        dropdownList.style.display = "none";
+      }, 200);
+    });
+
+    searchInput.addEventListener("focus", () => {
+      dropdownList.style.display = "flex";
+    });
+
+    listItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const selectedText = item.textContent;
+        searchInput.value = "";
+        searchInput.placeholder = selectedText;
+        const findDish = menuDataArr.find((item) => item.name == selectedText);
+        console.log(findDish);
+
+        window.location.href = `./pages/card.html?id=${findDish.id}`;
+      });
+    });
   })
 
   .catch((error) => {

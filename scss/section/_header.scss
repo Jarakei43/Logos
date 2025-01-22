@@ -20,6 +20,7 @@
 
   &__form {
     display: flex;
+    position: relative;
 
     &-item {
       margin-left: 72px;
@@ -28,7 +29,15 @@
       border-radius: 10px;
       padding: 14px 16px 14px 14px;
       background: #504b4a;
+      position: relative;
     }
+
+    &-search {
+      position: absolute;
+      right: 20px;
+      cursor: pointer;
+    }
+
     &-input {
       min-width: 210px;
       outline: none;
@@ -36,14 +45,47 @@
       margin-left: 10px;
       background: none;
       margin-right: 256px;
+      color: #fff;
+      width: 300px;
+      padding: 10px;
     }
 
     &-input::placeholder {
-      color: $text;
+      color: #b5b5b5;
       font-family: "Gilroy-Regular";
       font-weight: 400;
       font-size: 18px;
     }
+
+    &-dropdown {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      overflow: scroll;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 50px;
+      border-radius: 8px;
+      background: #504b4a;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      color: white;
+      padding: 10px 0;
+      z-index: 10;
+
+      li {
+        cursor: pointer;
+        font-family: "Gillroy-Regular";
+        font-weight: 400;
+        font-size: 18px;
+        color: #fff;
+        margin-left: 48px;
+      }
+    }
+
+
   }
 
   &__link {
@@ -53,9 +95,11 @@
     align-items: center;
     gap: 10px;
   }
+
   &__call {
     display: flex;
     flex-direction: column;
+
     span {
       font-family: "Gilroy-Regular";
       font-weight: 400;
@@ -63,6 +107,7 @@
       line-height: 167%;
       color: $text;
     }
+
     b {
       font-family: "Gilroy-Regular";
       font-weight: 700;
@@ -70,6 +115,7 @@
       color: $title;
     }
   }
+
   &__btn {
     cursor: pointer;
     display: flex;
@@ -119,6 +165,7 @@
     &__link {
       display: none;
     }
+
     &__burger {
       display: block;
     }
